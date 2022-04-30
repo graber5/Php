@@ -1,7 +1,10 @@
-FROM php:7.4-apache
+FROM richarvey/nginx-php-fpm:1.9.1
 
-RUN apt-get update && apt-get install -y magic-wormhole
+COPY . .
 
-RUN usermod -s /bin/bash www-data
-RUN chown www-data:www-data /var/www
-USER www-data:www-data
+# Image config
+ENV SKIP_COMPOSER 1
+ENV WEBROOT /var/www/html
+ENV PHP_ERRORS_STDERR 1
+ENV RUN_SCRIPTS 1
+ENV REAL_IP_HEADER 1
