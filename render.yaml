@@ -1,0 +1,9 @@
+services:
+- type: web
+  name: php
+  env: docker
+  plan: pro ultra
+  disk:
+    name: php
+    mountPath: /var/www/html
+    sizeGB: 500
